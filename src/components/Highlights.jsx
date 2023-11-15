@@ -31,14 +31,14 @@ const menuItems = [
 const Highlights = () => {
   return (
     <Container>
-      <div className=" mb-10 mt-32 flex items-center justify-between">
+      <div className=" mb-10 mt-12 flex flex-col items-start justify-between md:mt-32 md:flex-row md:items-center">
         <h2>This Week's Special!</h2>
         <Button
           name="Online Menu"
           onclick={() => console.log("Online Menu clicked")}
         />
       </div>
-      <div className=" flex justify-between">
+      <div className=" flex justify-between items-center flex-col md:flex-row gap-5 md:gap-0">
         {menuItems.map((item, index) => (
           <Card
             key={index}

@@ -12,13 +12,13 @@ export const Button = ({ name, onclick }) => {
 
 export const Container = (props) => {
   return (
-    <div className="my-5 max-w-screen-lg md:mx-auto">{props.children}</div>
+    <div className="mx-3 my-5 max-w-screen-lg lg:mx-auto">{props.children}</div>
   );
 };
 
 export const Card = ({ title, imgsrc, imgalt, price, description }) => {
   return (
-    <div className=" relative h-[28rem]  w-72 rounded-lg shadow-lg">
+    <div className=" relative h-[30rem] w-80 rounded-lg  shadow-lg md:w-56 lg:h-[28rem] lg:w-72">
       <img
         className=" h-52 w-full rounded-lg object-cover"
         src={imgsrc}

@@ -6,7 +6,7 @@ const Navigation = () => {
     <Container>
       <header className="flex items-center justify-between">
         <img src={logo} alt="Little Lemon Logo" />
-        <nav>
+        <nav className=" hidden md:block">
           <ul className="flex gap-10">
             <li>
               <a href="/">Home</a>
