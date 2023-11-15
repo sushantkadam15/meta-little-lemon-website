@@ -1,5 +1,6 @@
 import Navigation from "./components/ Navigation";
 import HeroSection from "./components/HeroSection.jsx";
+import Highlights from "./components/Highlights.jsx";
 
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
 
             <Navigation/>
             <HeroSection/>
+            <Highlights />
 
         </main>);
 }
