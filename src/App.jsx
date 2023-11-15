@@ -5,6 +5,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Testimonials from "./components/Testimonials.jsx";
+import About from "./components/About.jsx";
 
 function App() {
   const theme = createTheme({
@@ -26,6 +27,7 @@ function App() {
           <HeroSection />
           <Highlights />
           <Testimonials />
+          <About />
         </main>
       </LocalizationProvider>
     </ThemeProvider>
