@@ -6,6 +6,7 @@ import Footer from "../components/Footer.jsx";
 import TableReservationForm from "../components/TableReservationForm.jsx";
 import { fetchAPI, submitAPI } from "../util/TableReservationAPI.js";
 
+
 function App() {
   const theme = createTheme({
     palette: {

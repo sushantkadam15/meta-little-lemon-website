@@ -5,6 +5,13 @@ import { StaticDateTimePicker } from "@mui/x-date-pickers/StaticDateTimePicker";
 
 const TableReservationForm = ({ fetchAPI, submitAPI }) => {
   const [bookings, setBookings] = useState("");
+  const [isAlertDisplayed, setIsAlertDisplayed] = useState(false);
+
+  const [reservationDetails, setReservationDetails] = useState({
+    name: "",
+    dateAndTime: dayjs(),
+    ocassionDetails: "",
+  });
 
   const currentTime = dayjs();
   const officeHoursStart = currentTime.hour(15).minute(0).second(0);
@@ -41,21 +48,54 @@ const TableReservationForm = ({ fetchAPI, submitAPI }) => {
     return isOffHours || isNotAvailable;
   };
 
+  const makeReservation = (e) => {
+    e.preventDefault();
+    if (reservationDetails.name.length > 0) {
+      const response = submitAPI(reservationDetails);
+      if (response) {
+        setIsAlertDisplayed(true);
+        setTimeout(() => {
+          setIsAlertDisplayed(false);
+        }, 2000);
+      }
+    }
+  };
+
   return (
     <Container>
-      <div className=" rounded-2xl p-10 shadow-2xl">
-        <h1 className="text-5xl text-primary md:text-7xl">Table Reservation</h1>
-        <form className="my-14 text-xl">
-          <div className="flex items-center justify-between gap-12">
-            <div className="text-primary">
+      {/* Alert  */}
+      {isAlertDisplayed && (
+        <div className=" $ absolute left-0 right-0 top-20 mx-auto w-[24rem] rounded-lg bg-secondary p-2 text-center text-lg text-primary shadow-lg">{`Reservation for ${
+          reservationDetails.name
+        } is confirmed at ${reservationDetails.dateAndTime.format(
+          "LLLL",
+        )} `}</div>
+      )}
+
+      <div className=" my-24 rounded-2xl md:p-10 md:shadow-2xl">
+        <h1 className="mb-5 text-5xl text-primary md:text-7xl">
+          Table Reservation
+        </h1>
+        <form className="text-lg">
+          <div className=" flex min-h-[596px] flex-col gap-12 md:flex-row md:items-center">
+            <div className="text-primary md:w-1/2">
               <label className=" mb-3 block text-2xl font-bold" htmlFor="name">
                 Name
               </label>
               <input
-                className="h-12 w-full p-2 focus:outline-primary md:w-96"
+                className="h-10 w-full rounded-sm p-2 focus:outline-primary md:w-96"
                 type="text"
                 id="name"
+                required
+                value={reservationDetails.name}
+                onChange={(e) => {
+                  setReservationDetails((previousDetail) => ({
+                    ...previousDetail,
+                    name: e.target.value,
+                  }));
+                }}
               />
+
               <label
                 className=" mb-3 mt-8 block text-2xl font-bold"
                 htmlFor="ocassion"
@@ -63,13 +103,15 @@ const TableReservationForm = ({ fetchAPI, submitAPI }) => {
                 Occasion
               </label>
               <textarea
-                className=" w-full p-2 focus:outline-primary md:w-96"
-                rows={5}
+                className=" w-full rounded-sm p-2 focus:outline-primary md:w-96"
+                rows={8}
                 placeholder="Birthday, Anniversary..."
                 id="ocassion"
               />
             </div>
-            <div className="w-full">
+
+            {/* Date and time picker   */}
+            <div className="relative md:w-1/2">
               <StaticDateTimePicker
                 sx={{
                   backgroundColor: "#EDEFEE",
@@ -82,11 +124,20 @@ const TableReservationForm = ({ fetchAPI, submitAPI }) => {
                 minutesStep={30}
                 autoFocus={true}
                 shouldDisableTime={shouldDisableTime}
+                slotProps={{
+                  actionBar: { actions: [] },
+                }}
+                onChange={(value) => {
+                  setReservationDetails((previousDetail) => ({
+                    ...previousDetail,
+                    dateAndTime: value,
+                  }));
+                }}
               />
             </div>
           </div>
 
-          <Button name="Reserve Now" onclick={() => console.log("Hello")} />
+          <Button name="Reserve Now" onclick={makeReservation} />
         </form>
       </div>
     </Container>
