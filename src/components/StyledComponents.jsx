@@ -1,4 +1,6 @@
+import React from 'react';
 import deliveryicon from "../assets/icons_assets/delivery.svg";
+
 export const Button = ({ name, onclick }) => {
   return (
     <button
