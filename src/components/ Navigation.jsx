@@ -1,10 +1,12 @@
-import { Container } from "./StyledComponents.jsx";
+import React from "react";
+import { Button, Container } from "./StyledComponents.jsx";
 import logo from "../assets/icons_assets/Logo.svg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Navigation = () => {
   const [isIndicatorDisplayed, setIsIndicatorDisplayed] = useState(true);
+
   return (
     <Container>
       <header className="flex items-center justify-between">
@@ -38,6 +40,11 @@ const Navigation = () => {
               <Link to={"/construction"}>Login</Link>
             </li>
           </ul>
+        </nav>
+        <nav className="md:hidden ">
+          <Link to={"/reservation"}>
+            <Button name={"Reservation"} />
+          </Link>
         </nav>
       </header>
     </Container>
