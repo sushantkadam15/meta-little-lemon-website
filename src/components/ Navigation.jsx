@@ -9,7 +9,7 @@ const Navigation = () => {
 
   return (
     <Container>
-      <header className="flex items-center justify-between">
+      <header className="flex items-center justify-between mx-2 md:mx-0">
         <img src={logo} alt="Little Lemon Logo" />
         <nav className=" hidden md:block">
           <ul className="flex gap-10">

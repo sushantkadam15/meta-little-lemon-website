@@ -12,7 +12,9 @@ export const Button = ({ name, onclick }) => {
 
 export const Container = (props) => {
   return (
-    <div className="mx-3 my-5 max-w-screen-lg lg:mx-auto">{props.children}</div>
+    <div className="mx-5 md:mx-0 my-5 md:max-w-screen-lg lg:mx-auto">
+      {props.children}
+    </div>
   );
 };
 

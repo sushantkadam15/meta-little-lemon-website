@@ -63,7 +63,7 @@ const TableReservationForm = ({ fetchAPI, submitAPI }) => {
       setTimeout(() => {
         setIsAlertDisplayed(false);
         navigateTo("/");
-      }, 2000);
+      }, 5000);
     }
   };
 
@@ -71,14 +71,18 @@ const TableReservationForm = ({ fetchAPI, submitAPI }) => {
     <Container>
       {/* Alert for successful reservation */}
       {isAlertDisplayed && (
-        <div className="absolute left-0 right-0 top-20 mx-auto w-[24rem] rounded-lg bg-secondary p-2 text-center text-lg text-primary shadow-lg">
-          {`Reservation for ${
-            reservationDetails.name
-          } is confirmed at ${reservationDetails.dateAndTime.format("LLLL")} `}
+        <div className="fixed left-0 right-0 top-0 z-50 mx-auto flex h-full w-screen items-center justify-center rounded-lg p-2 px-24 text-center text-3xl text-primary backdrop-blur-3xl">
+          <p>
+            {`Reservation for ${
+              reservationDetails.name
+            } is confirmed at ${reservationDetails.dateAndTime.format(
+              "LLLL",
+            )}. You are now being directed to home.`}
+          </p>
         </div>
       )}
 
-      <div className="my-24 rounded-2xl md:p-10 md:shadow-2xl">
+      <div className="my-10 rounded-2xl md:p-10 md:shadow-2xl">
         {/* Form for table reservation */}
         <h1 className="mb-5 text-5xl text-primary md:text-7xl">
           Table Reservation

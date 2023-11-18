@@ -3,10 +3,10 @@ import heroImage from "../assets/icons_assets/restauranfood.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="bg-primary py-10 text-base-100">
+    <section className=" text-base-100 md:bg-primary md:py-5">
       <Container>
         <div className="relative flex flex-col-reverse md:flex-row">
-          <div>
+          <div className=" rounded-lg  bg-primary px-5 pb-10 pt-52 md:w-1/2 md:p-0">
             <h1 className="h-16 text-secondary">Little Lemon</h1>
             <h2>Chicago</h2>
             <p className="mb-5 mt-2 max-w-xs">
@@ -18,9 +18,9 @@ const HeroSection = () => {
               onclick={() => console.log("Clicked")}
             />
           </div>
-          <div className="mx-auto h-80 w-96 bg-transparent md:absolute md:right-1 md:top-6 md:mx-0">
+          <div className="flex w-full justify-center md:mx-0  md:justify-end relative h-44">
             <img
-              className="h-full w-full rounded-2xl object-cover shadow-lg"
+              className=" h-96 w-72 rounded-lg object-cover shadow-lg md:w-96 absolute"
               src={heroImage}
               alt={"Food"}
             />

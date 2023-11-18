@@ -27,7 +27,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <Navigation />
-          <main className="mt-10 min-h-[90vh] min-w-fit md:min-h-[75vh]">
+          <main className="mt-10 min-h-[90vh] min-w-fit md:min-h-[75vh] w-screen">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route

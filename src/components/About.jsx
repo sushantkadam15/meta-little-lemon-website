@@ -6,7 +6,7 @@ import imageB from "../assets/icons_assets/restaurant.jpg";
 const About = () => {
   return (
     <Container>
-      <div className=" my-24 flex flex-col items-center md:flex-row ">
+      <div className=" my-24 flex flex-col items-center md:flex-row">
         <div className="font-markazi md:w-1/2">
           <h2 className=" text-5xl">Little Lemon</h2>
           <h3 className="text-2xl">Chicago</h3>
@@ -24,7 +24,7 @@ const About = () => {
         </div>
         <div className="mt-5 md:mt-0 md:h-[40rem]">
           <img
-            className=" rounded-sm object-cover md:relative md:left-28 md:h-72 md:w-72 lg:left-32 lg:h-96  lg:w-96 "
+            className=" rounded-sm md:object-cover md:relative md:left-28 md:h-72 md:w-72 lg:left-32 lg:h-96  lg:w-96 "
             src={imageA}
             alt="Chef and Owner Mario and Adrian"
           />
