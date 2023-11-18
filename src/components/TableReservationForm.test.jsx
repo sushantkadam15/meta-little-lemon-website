@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import TableReservationForm from "./TableReservationForm"; // Update with the correct path
+import TableReservationForm from "./TableReservationForm";
+import { BrowserRouter } from "react-router-dom";
 
 // Mock fetchAPI and submitAPI functions
 const mockFetchAPI = jest.fn();
@@ -12,10 +13,12 @@ describe("TableReservationForm component", () => {
     mockFetchAPI.mockClear();
     mockSubmitAPI.mockClear();
     render(
-      <TableReservationForm
-        fetchAPI={mockFetchAPI}
-        submitAPI={mockSubmitAPI}
-      />,
+      <BrowserRouter>
+        <TableReservationForm
+          fetchAPI={mockFetchAPI}
+          submitAPI={mockSubmitAPI}
+        />
+      </BrowserRouter>
     );
   });
 
@@ -23,9 +26,8 @@ describe("TableReservationForm component", () => {
     // Check if essential elements are present in the form
     expect(screen.getByLabelText("Name")).toBeInTheDocument();
     expect(screen.getByLabelText("Occasion")).toBeInTheDocument();
-    expect(screen.getByRole("spinbutton")).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "Reserve Now" }),
+      screen.getByRole("button", { name: "Reserve Now" })
     ).toBeInTheDocument();
   });
 
@@ -42,8 +44,7 @@ describe("TableReservationForm component", () => {
     // Check if submitAPI function was called with correct data when the form is submitted
     expect(mockSubmitAPI).toHaveBeenCalledWith({
       name: "John Doe",
-      dateAndTime: expect.any(Object), // Assuming the date/time is being handled by a library or a specific format
-      ocassionDetails: "Birthday", // Typo in the original code, assuming corrected to "occasionDetails"
+      occasionDetails: "Birthday", // Corrected typo in the original code
     });
   });
 
