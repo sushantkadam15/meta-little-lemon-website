@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Button, Container } from "./StyledComponents";
 import dayjs from "dayjs";
 import { StaticDateTimePicker } from "@mui/x-date-pickers/StaticDateTimePicker";
+import { useNavigate } from "react-router-dom";
 
 const TableReservationForm = ({ fetchAPI, submitAPI }) => {
+  const navigateTo = useNavigate();
+
   // State initialization
   const [bookings, setBookings] = useState("");
   const [isAlertDisplayed, setIsAlertDisplayed] = useState(false);
@@ -55,12 +58,12 @@ const TableReservationForm = ({ fetchAPI, submitAPI }) => {
     if (reservationDetails.name.length > 0) {
       const response = submitAPI(reservationDetails);
       if (response) {
-        // Display confirmation alert for successful reservation
         setIsAlertDisplayed(true);
-        setTimeout(() => {
-          setIsAlertDisplayed(false);
-        }, 2000);
       }
+      setTimeout(() => {
+        setIsAlertDisplayed(false);
+        navigateTo("/");
+      }, 2000);
     }
   };
 
@@ -80,7 +83,7 @@ const TableReservationForm = ({ fetchAPI, submitAPI }) => {
         <h1 className="mb-5 text-5xl text-primary md:text-7xl">
           Table Reservation
         </h1>
-        <form className="text-lg">
+        <form className="text-lg" onSubmit={(e) => makeReservation(e)}>
           <div className="flex min-h-[596px] flex-col gap-12 md:flex-row md:items-center">
             <div className="text-primary md:w-1/2">
               {/* Name input */}
@@ -153,7 +156,7 @@ const TableReservationForm = ({ fetchAPI, submitAPI }) => {
           </div>
 
           {/* Button to submit reservation */}
-          <Button name="Reserve Now" onClick={makeReservation} />
+          <Button type="submit" name="Reserve Now" />
         </form>
       </div>
     </Container>

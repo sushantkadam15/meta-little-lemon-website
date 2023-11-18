@@ -1,7 +1,10 @@
 import { Container } from "./StyledComponents.jsx";
 import logo from "../assets/icons_assets/Logo.svg";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Navigation = () => {
+  const [isIndicatorDisplayed, setIsIndicatorDisplayed] = useState(true);
   return (
     <Container>
       <header className="flex items-center justify-between">
@@ -9,22 +12,30 @@ const Navigation = () => {
         <nav className=" hidden md:block">
           <ul className="flex gap-10">
             <li>
-              <a href="/">Home</a>
+              <Link to={"/"}>Home</Link>
             </li>
             <li>
-              <a href="/about">About</a>
+              <Link to={"/construction"}>About</Link>
             </li>
             <li>
-              <a href="/menu">Menu</a>
+              <Link to={"/construction"}>Menu</Link>
+            </li>
+            <li className="relative">
+              {isIndicatorDisplayed && (
+                <span className="absolute bottom-5 left-20 me-3 flex h-3 w-3 animate-ping	 rounded-full bg-accent-one"></span>
+              )}
+              <Link
+                onClick={() => setIsIndicatorDisplayed(false)}
+                to={"/reservation"}
+              >
+                Reservation
+              </Link>
             </li>
             <li>
-              <a href="/reservation">Reservation</a>
-            </li>
-            <li>
-              <a href="/order">Order Online</a>
+              <Link to={"/construction"}>Order Online</Link>
             </li>
             <li className="ml-4">
-              <a href="/login">Login</a>
+              <Link to={"/construction"}>Login</Link>
             </li>
           </ul>
         </nav>
