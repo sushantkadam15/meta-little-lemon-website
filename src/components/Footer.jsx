@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "./StyledComponents";
 import logo from "../assets/icons_assets/Logo.svg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -12,13 +13,13 @@ const Footer = () => {
           </div>
           <div className="">
             <h3 className=" mb-1 font-bold">Quick Links</h3>
-            <ul>
-              <li>Home</li>
-              <li>About</li>
-              <li>Menu</li>
-              <li>Reservation</li>
-              <li>About</li>
-              <li>Login</li>
+            <ul className=" flex flex-col">
+              <Link to={"/"}>Home</Link>
+              <Link to={"/construction"}>About</Link>
+              <Link to={"/construction"}>Menu</Link>
+              <Link to={"/reservation"}>Reservation</Link>
+              <Link to={"/construction"}>About</Link>
+              <Link to={"/construction"}>Login</Link>
             </ul>
           </div>
           <div>
